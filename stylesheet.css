@@ -87,3 +87,7 @@ button:active {
     align-items: stretch;
     gap: 5px;
 }
+
+#equal {
+    min-width: 100%;
+}

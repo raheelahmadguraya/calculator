@@ -27,7 +27,9 @@ const operate = (operandA, operandB, operator) => {
 
 }
 
-console.log(operate(10, 5, "add"));
-console.log(operate(10, 5, "subtract"));
-console.log(operate(10, 5, "multiply"));
-console.log(operate(10, 5, "divide"));
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) =>{
+    button.addEventListener('click', () =>{
+        alert.apply(button.id);
+    })
+})
