@@ -88,6 +88,7 @@ button:active {
     gap: 5px;
 }
 
-#equal {
+#equal,
+#delete {
     min-width: 100%;
 }
