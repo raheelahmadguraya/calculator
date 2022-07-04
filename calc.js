@@ -62,6 +62,17 @@ const storeOp = op => {
     }
 }
 
+const evaluate = () => {
+    if (operator === null){
+        display.textContent = operand1;
+    } else {
+    operand1 = operate(operand1, operand2, operator);
+    operand2 = '';
+    operator = null;
+    display.textContent = operand1;
+    }
+}
+
 operands.forEach((nums) => {
     nums.addEventListener('click', event => {
         setDisplay(nums);
@@ -69,10 +80,21 @@ operands.forEach((nums) => {
     })
 })
 
+let opCounter = 0;
 operators.forEach((ops) => {
     ops.addEventListener('click', event => {
-        setDisplay(ops);
-        storeOp(ops);
+        if (opCounter > 0){
+            console.log('case1');
+            evaluate();
+            setDisplay(ops);
+            storeOp(ops);
+        }
+        if (opCounter === 0){
+            console.log('case2')
+            setDisplay(ops);
+            storeOp(ops);
+            opCounter++;
+        }
     })
 })
 
@@ -82,6 +104,7 @@ negate.addEventListener('click', event => {
 
 clear.addEventListener('click', event => {
     display.textContent = '';
+    opCounter = 0;
     operand1 = '';
     operand2 = '';
     operator = null;
