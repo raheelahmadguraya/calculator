@@ -117,3 +117,12 @@ clear.addEventListener('click', event => {
 equal.addEventListener('click', event => {
     evaluate();
 })
+
+window.addEventListener('keydown', function(e) {
+    try {
+        document.querySelector(`button[data-key="${e.key}"]`).click()
+    }
+    catch(err) {
+
+    }
+})
