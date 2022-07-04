@@ -71,6 +71,7 @@ const evaluate = () => {
         display.textContent = operand1;
     } else {
     operand1 = operate(operand1, operand2, operator);
+    operand1 = Math.round(operand1 * 1000) / 1000;
     operand2 = '';
     operator = null;
     display.textContent = operand1;
