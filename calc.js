@@ -1,4 +1,4 @@
-const add = (augend, addend) => augend + addend;
+const add = (augend, addend) => parseInt(augend) + parseInt(addend);
 
 const subtract = (minuend, subtrahend) => minuend - subtrahend;
 
@@ -39,12 +39,16 @@ const negate = document.querySelector('#negative');
 
 const setDisplay = (btn) => {
     let dsp = display.textContent;
-    if (btn.classList.contains('num')){
+    if (btn.className === 'num' && operator === null) {
         updateDsp = dsp + '' + btn.value;
         display.textContent = updateDsp;
     }
-    if (btn.classList.contains('ops')){
+    if (btn.className === 'ops' && operator === null) {
         updateDsp = dsp + ' ' + btn.value + ' ';
+        display.textContent = updateDsp;
+    }
+    if (btn.className === 'num' && operator != null) {
+        updateDsp = dsp + '' + btn.value;
         display.textContent = updateDsp;
     }
 }
@@ -111,8 +115,5 @@ clear.addEventListener('click', event => {
 })
 
 equal.addEventListener('click', event => {
-    operand1 = operate(operand1, operand2, operator);
-    operand2 = '';
-    operator = null;
-    display.textContent = operand1;
+    evaluate();
 })
